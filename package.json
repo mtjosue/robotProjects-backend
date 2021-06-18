@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Manage robots and projects assignment.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon -r dotenv/config --exec nodemon server.js dotenv_config_path=config/.env",
+    "client": "npm start --prefix ../frontend",
+    "seed": "node -r dotenv/config seeds/index.js dotenv_config_path=config/.env ",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "JRMT",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "mongoose": "^5.12.14",
+    "react-file-base64": "^1.0.3"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0",
+    "nodemon": "^2.0.7"
+  }
+}

@@ -60,4 +60,29 @@ const updateRobot = asyncHandler(async (req, res) => {
   }
 });
 
-export { fetchRobots, createRobot, deleteRobot, updateRobot };
+const updateAllProjectsOnRobot = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  //
+  const data = req.body;
+  //
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).send(`No Robot found with ID : ${id}`);
+  } else {
+    //
+    const robot = await Robot.findById(id);
+    //
+    robot.assignedProjects = data;
+    //
+    const updatedRobot = await robot.save();
+    //
+    res.json(updatedRobot);
+  }
+});
+
+export {
+  fetchRobots,
+  createRobot,
+  deleteRobot,
+  updateRobot,
+  updateAllProjectsOnRobot,
+};

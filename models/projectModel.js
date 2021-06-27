@@ -6,6 +6,8 @@ const projectSchema = mongoose.Schema({
   deadline: String,
   priority: String,
   description: String,
+  selected: { type: Boolean, default: false },
+  assignedRobots: Array,
 });
 
 const Project = mongoose.model("Project", projectSchema);

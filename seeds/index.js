@@ -16,7 +16,7 @@ const seedData = async () => {
       fuelLevel: 62.5,
       imageUrl:
         "https://vignette.wikia.nocookie.net/medabots/images/5/52/M4-KWG-1.gif/revision/latest?cb=20170925023814",
-      assignedProjects: 0,
+      assignedProjects: [],
     },
     {
       name: "Arcbeetle",
@@ -24,7 +24,7 @@ const seedData = async () => {
       fuelLevel: 87.9,
       imageUrl:
         "https://vignette.wikia.nocookie.net/medabots/images/2/22/M4-KBT-4.gif/revision/latest?cb=20170917060628",
-      assignedProjects: 0,
+      assignedProjects: [],
     },
     {
       name: "Redrun",
@@ -32,7 +32,7 @@ const seedData = async () => {
       fuelLevel: 65.1,
       imageUrl:
         "https://vignette.wikia.nocookie.net/medabots/images/a/a1/M4-DVL-3.gif/revision/latest?cb=20171012184515",
-      assignedProjects: 0,
+      assignedProjects: [],
     },
     {
       name: "Sumilidon",
@@ -40,7 +40,7 @@ const seedData = async () => {
       fuelLevel: 49,
       imageUrl:
         "https://vignette.wikia.nocookie.net/medabots/images/1/1f/M4-STG-0.gif/revision/latest?cb=20170917060040",
-      assignedProjects: 0,
+      assignedProjects: [],
     },
   ];
 
@@ -50,30 +50,36 @@ const seedData = async () => {
       deadline: `${new Date()}`,
       priority: 5,
       completed: false,
-      description: "Finish this project ASAP",
+      description: "ASAP",
+      assignedRobots: [],
+      selected: false,
     },
     {
       title: "Go to Monaco",
       deadline: `${new Date()}`,
       priority: 5,
       completed: false,
-      description: "Finally visit a far away place of my own volition",
+      description: "Finally",
+      assignedRobots: [],
+      selected: false,
     },
     {
       title: "Have Fun",
       deadline: `${new Date()}`,
       priority: 5,
       completed: false,
-      description:
-        "Try to have as much fun as possible on the way, regret is not an option.",
+      description: "Try",
+      assignedRobots: [],
+      selected: false,
     },
     {
       title: "Finish Fullstack JPFP",
       deadline: `${new Date()}`,
       priority: 9,
       completed: false,
-      description:
-        "Finish this shit so we can start working on dope platforms as projects.",
+      description: "Finish",
+      assignedRobots: [],
+      selected: false,
     },
   ];
 

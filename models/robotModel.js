@@ -5,7 +5,7 @@ const robotSchema = mongoose.Schema({
   fuelType: String,
   fuelLevel: Number,
   imageUrl: String,
-  assignedProjects: Number,
+  assignedProjects: Array,
 });
 
 const Robot = mongoose.model("Robot", robotSchema);

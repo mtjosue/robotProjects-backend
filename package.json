@@ -9,7 +9,8 @@
     "server": "nodemon -r dotenv/config --exec nodemon server.js dotenv_config_path=config/.env",
     "client": "npm start --prefix ../frontend",
     "seed": "node -r dotenv/config seeds/index.js dotenv_config_path=config/.env ",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "seedDev": "concurrently \"npm run seed\" \"npm run server\" \"npm run client\""
   },
   "author": "JRMT",
   "license": "MIT",

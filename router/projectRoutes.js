@@ -5,16 +5,22 @@ import {
   createProject,
   deleteProject,
   updateProject,
-  // updateAllRobotsOnProject,
-  updateRobotOnAllProjects,
+  updateAllRobotsOnProject,
 } from "../controller/projectController.js";
+
+import {
+  updateProjectOnAllRobots,
+  deleteProjectFromRobots,
+} from "../controller/robotController.js";
 
 router.route("/").get(fetchProjects);
 router.route("/").post(createProject);
 router.route("/:id").delete(deleteProject).put(updateProject);
 //projects/:id/robots
-// router.route("/:id/robots").put(updateAllRobotsOnProject);
+router.route("/:id/robots").put(updateAllRobotsOnProject);
 //projects/:id/robot
-// router.route("/:id/robot").put(updateRobotOnAllProjects);
+router.route("/:id/robot").put(updateProjectOnAllRobots);
+//
+router.route("/:id/deleteProject").put(deleteProjectFromRobots);
 
 export default router;

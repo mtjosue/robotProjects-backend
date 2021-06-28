@@ -63,39 +63,43 @@ const updateProject = asyncHandler(async (req, res) => {
 
 //---------------------------------------------------------------------------------------------
 
-// const updateAllRobotsOnProject = asyncHandler(async (req, res) => {
-//   const { id } = req.params;
-//   const data = req.body;
-//   // console.log(
-//   //   "The data from the req.body in updateProjectRobots controller : ",
-//   //   data
-//   // );
-//   // console.log(
-//   //   "The id destructured from the req.params in updateProjectRobots : ",
-//   //   id
-//   // );
+const updateAllRobotsOnProject = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const data = req.body;
+  // console.log(
+  //   "The data from the req.body in updateProjectRobots controller : ",
+  //   data
+  // );
+  // console.log(
+  //   "The id destructured from the req.params in updateProjectRobots : ",
+  //   id
+  // );
+  //
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    //
+    return res.status(404).send(`No Project found with ID : ${id}`);
+    //
+  } else {
+    //
+    const project = await Project.findById(id);
 
-//   if (!mongoose.Types.ObjectId.isValid(id)) {
-//     return res.status(404).send(`No Project found with ID : ${id}`);
-//   } else {
-//     const project = await Project.findById(id);
+    // console.log("The project BEFORE updating : ", project);
 
-//     // console.log("The project BEFORE updating : ", project);
+    project.assignedRobots = data;
 
-//     project.assignedRobots = data;
+    // console.log("--------------------------------------------------------");
 
-//     // console.log("--------------------------------------------------------");
+    // console.log("The project AFTER updating : ", project);
 
-//     // console.log("The project AFTER updating : ", project);
-
-//     const updatedProject = await project.save();
-//     // console.log(
-//     //   "The project we are using to update the redux : ",
-//     //   updatedProject
-//     // );
-//     res.json(updatedProject);
-//   }
-// });
+    const updatedProject = await project.save();
+    // console.log(
+    //   "The project we are using to update the redux : ",
+    //   updatedProject
+    // );
+    res.json(updatedProject);
+  }
+  //
+});
 
 const updateRobotOnAllProjects = asyncHandler(async (req, res) => {
   //
@@ -103,7 +107,7 @@ const updateRobotOnAllProjects = asyncHandler(async (req, res) => {
   //
   const data = req.body;
   //
-  console.log("line 106 data : ".toUpperCase(), data);
+  // console.log("line 106 data : ".toUpperCase(), data);
   //
   if (!mongoose.Types.ObjectId.isValid(id)) {
     //
@@ -113,17 +117,17 @@ const updateRobotOnAllProjects = asyncHandler(async (req, res) => {
     //
     const robot = await Robot.findById(id);
     //
-    console.log("line 116 robot : ".toUpperCase(), robot);
+    // console.log("line 116 robot : ".toUpperCase(), robot);
     //
     const updateRobotOnProjects = data.map(async (project) => {
       //
-      console.log("line 120 PROJECT : ".toUpperCase(), project); ////////////////////////////////////////
+      // console.log("line 120 PROJECT : ".toUpperCase(), project); ////////////////////////////////////////
       //
       const projectFound = await Project.findById(project._id);
       //
       // console.log("PROJECTFOUND.ASSIGNEDORBOTS : ");
       //
-      console.log("line 122 projectFound : ".toUpperCase(), projectFound);
+      // console.log("line 122 projectFound : ".toUpperCase(), projectFound);
       //
       // if (projectFound.assignedRobots.length > 0) {
       //
@@ -136,7 +140,7 @@ const updateRobotOnAllProjects = asyncHandler(async (req, res) => {
         //
         const updatedProject = await projectFound.save();
         //
-        console.log("line 139 updatedProject : ".toUpperCase(), updatedProject); ////////////////////////////////
+        // console.log("line 139 updatedProject : ".toUpperCase(), updatedProject); ////////////////////////////////
         //
         return updatedProject;
         //
@@ -156,7 +160,7 @@ const updateRobotOnAllProjects = asyncHandler(async (req, res) => {
         //
         const updatedProject = await projectFound.save();
         //
-        console.log("line 150 updatedProject : ".toUpperCase(), updatedProject); ////////////////////////////////////////
+        // console.log("line 150 updatedProject : ".toUpperCase(), updatedProject); ////////////////////////////////////////
         //
         return updatedProject;
         //
@@ -168,7 +172,7 @@ const updateRobotOnAllProjects = asyncHandler(async (req, res) => {
     //
     const updatedProjects = await Promise.all(updateRobotOnProjects);
     //
-    console.log("line 161 updatedProjects : ".toUpperCase(), updatedProjects); ///////////////////////////////////////////
+    // console.log("line 161 updatedProjects : ".toUpperCase(), updatedProjects); ///////////////////////////////////////////
     //
     res.json(updatedProjects);
     //
@@ -273,7 +277,7 @@ export {
   createProject,
   deleteProject,
   updateProject,
-  // updateAllRobotsOnProject,
+  updateAllRobotsOnProject,
   updateRobotOnAllProjects,
   deleteRobotFromProjects,
 };

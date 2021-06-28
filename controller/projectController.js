@@ -272,6 +272,33 @@ const deleteRobotFromProjects = asyncHandler(async (req, res) => {
 });
 //---------------------------------------------------------------------------------------------
 
+const completedChange = asyncHandler(async (req, res) => {
+  //
+  const { id } = req.params;
+  //
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    //
+    return res.status(404).send(`No Robot found with ID : ${id}`);
+    //
+  } else {
+    //
+    const project = await Project.findById(id);
+    //
+    // console.log("project line 287 : ".toUpperCase(), project);
+    //
+    project.completed = !project.completed;
+    //
+    // console.log("project line 291 : ".toUpperCase(), project);
+    //
+    const updatedProject = await project.save();
+    //
+    res.json(updatedProject);
+    //
+  }
+});
+
+//---------------------------------------------------------------------------------------------
+
 export {
   fetchProjects,
   createProject,
@@ -280,4 +307,5 @@ export {
   updateAllRobotsOnProject,
   updateRobotOnAllProjects,
   deleteRobotFromProjects,
+  completedChange,
 };

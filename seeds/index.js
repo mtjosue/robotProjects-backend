@@ -47,7 +47,7 @@ const seedData = async () => {
   const projectsBatch = [
     {
       title: "Finish Fullstack",
-      deadline: `${new Date()}`,
+      deadline: ``,
       priority: 5,
       completed: false,
       description: "ASAP",
@@ -56,7 +56,7 @@ const seedData = async () => {
     },
     {
       title: "Go to Monaco",
-      deadline: `${new Date()}`,
+      deadline: ``,
       priority: 5,
       completed: false,
       description: "Finally",
@@ -65,7 +65,7 @@ const seedData = async () => {
     },
     {
       title: "Have Fun",
-      deadline: `${new Date()}`,
+      deadline: ``,
       priority: 5,
       completed: false,
       description: "Try",
@@ -74,7 +74,7 @@ const seedData = async () => {
     },
     {
       title: "Finish Fullstack JPFP",
-      deadline: `${new Date()}`,
+      deadline: `2021-06-28`,
       priority: 9,
       completed: false,
       description: "Finish",

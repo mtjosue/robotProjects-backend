@@ -6,6 +6,7 @@ import {
   deleteProject,
   updateProject,
   updateAllRobotsOnProject,
+  completedChange,
 } from "../controller/projectController.js";
 
 import {
@@ -22,5 +23,7 @@ router.route("/:id/robots").put(updateAllRobotsOnProject);
 router.route("/:id/robot").put(updateProjectOnAllRobots);
 //
 router.route("/:id/deleteProject").put(deleteProjectFromRobots);
+//
+router.route("/:id/completed").put(completedChange);
 
 export default router;
